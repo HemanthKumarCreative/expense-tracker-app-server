@@ -22,7 +22,6 @@ module.exports.getAllDownloads = async (req, res) => {
 
   try {
     const responseFromService = await downloadService.getAllDownloads(
-      req.query,
       req.params.userId
     );
     response.status = 200;

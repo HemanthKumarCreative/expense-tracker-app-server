@@ -13,11 +13,12 @@ module.exports.createDownload = async (serviceData) => {
   }
 };
 
-module.exports.getAllDownloads = async ({ skip = 0, limit = 10 }, userId) => {
+module.exports.getAllDownloads = async (userId) => {
   try {
+    // Fetching downloads, sorting by 'created' date in descending order, and limiting to 5 records
     let downloads = await Download.find({ userId })
-      .skip(parseInt(skip))
-      .limit(parseInt(limit));
+      .sort({ createdAt: -1 })
+      .limit(5);
     return formatMongoData(downloads);
   } catch (error) {
     console.log("Something went wrong: Service: getAllDownloads", error);

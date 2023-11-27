@@ -67,9 +67,9 @@ module.exports.createUser = async (serviceData) => {
   }
 };
 
-module.exports.getAllUsers = async ({ skip = 0, limit = 10 }) => {
+module.exports.getAllUsers = async () => {
   try {
-    let users = await User.find({}).skip(parseInt(skip)).limit(parseInt(limit));
+    let users = await User.find({});
     return formatMongoData(users);
   } catch (error) {
     console.log("Something went wrong: Service: getAllUsers", error);
