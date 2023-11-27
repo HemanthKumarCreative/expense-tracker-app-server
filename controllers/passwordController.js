@@ -89,3 +89,35 @@ module.exports.deletePassword = async (req, res) => {
 
   return res.status(response.status).send(response);
 };
+
+module.exports.forgotPassword = async (req, res) => {
+  let response = { ...constants.defaultServerResponse };
+
+  try {
+    const responseFromService = await passwordService.forgotPassword(req.body);
+    response.status = 200;
+    response.message = constants.passwordMessage.PRODUCT_CREATED;
+    response.body = responseFromService.message;
+  } catch (error) {
+    console.log("Something went wrong: Controller: forgotPassword", error);
+    response.message = error.message;
+  }
+
+  return res.status(response.status).send(response);
+};
+
+module.exports.resetPassword = async (req, res) => {
+  let response = { ...constants.defaultServerResponse };
+
+  try {
+    const responseFromService = await passwordService.resetPassword(req.body);
+    response.status = 200;
+    response.message = constants.passwordMessage.PRODUCT_CREATED;
+    response.body = responseFromService.message;
+  } catch (error) {
+    console.log("Something went wrong: Controller: resetPassword", error);
+    response.message = error.message;
+  }
+
+  return res.status(response.status).send(response);
+};

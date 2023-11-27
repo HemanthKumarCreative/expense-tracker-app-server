@@ -1,47 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const orderController = require("../controllers/orderController");
-const joiSchemaValidation = require("../middleware/joiSchemaValidation");
-const orderSchema = require("../database/schemas/orderSchema");
 const tokenValidation = require("../middleware/tokenValidation");
 
-router.post(
-  "/create-order",
-  // tokenValidation.validateToken,
-  // joiSchemaValidation.validateBody(orderSchema.createOrderSchema),
-  orderController.createOrder
-);
+router.post("/create-order", orderController.createOrder);
 
-router.post(
-  "/collect-payment",
-  // tokenValidation.validateToken,
-  // joiSchemaValidation.validateBody(orderSchema.createOrderSchema),
-  orderController.collectPayment
-);
+router.post("/collect-payment", orderController.collectPayment);
 
-router.get(
-  "/:id",
-  //  tokenValidation.validateToken,
-  orderController.getOrderById
-);
+router.get("/:id", orderController.getOrderById);
 
-router.put(
-  "/:id",
-  // tokenValidation.validateToken,
-  joiSchemaValidation.validateBody(orderSchema.updateOrderSchema),
-  orderController.updateOrder
-);
+router.put("/:id", orderController.updateOrder);
 
-router.get(
-  "/",
-  // tokenValidation.validateToken,
-  joiSchemaValidation.validateQueryParams(orderSchema.getAllOrdersSchema),
-  orderController.getAllOrders
-);
+router.get("/", orderController.getAllOrders);
 
-router.delete(
-  "/:id",
-  // tokenValidation.validateToken,
-  orderController.deleteOrder
-);
+router.delete("/:id", orderController.deleteOrder);
 module.exports = router;
