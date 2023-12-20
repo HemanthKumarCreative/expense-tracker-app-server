@@ -3,6 +3,8 @@ const { formatMongoData, checkObjectId } = require("../helpers/dbHelper");
 const constants = require("../constants/index");
 const Expense = require("../database/models/expenseModel");
 const AWS = require("aws-sdk");
+require("aws-sdk/lib/maintenance_mode_message").suppress = true;
+
 const Excel = require("exceljs");
 
 const saveToWorkBook = (jsonData, workbook, worksheet) => {
@@ -37,7 +39,7 @@ module.exports.createReport = async (userId) => {
     const workbook = await saveToWorkBook(expenses, emptyWorkbook, worksheet);
     const awsResponse = await workbook.xlsx.writeBuffer().then((buffer) => {
       const params = {
-        Bucket: "expensetracker250923",
+        Bucket: "expense-tracker-reports",
         Key: `expense_report${userId}${new Date().toLocaleTimeString()}.xlsx`,
         Body: buffer,
         ContentType:
