@@ -39,12 +39,11 @@ module.exports.createReport = async (userId) => {
     const workbook = await saveToWorkBook(expenses, emptyWorkbook, worksheet);
     const awsResponse = await workbook.xlsx.writeBuffer().then((buffer) => {
       const params = {
-        Bucket: "expense-tracker-reports",
+        Bucket: "expense-tracker-reports-v3",
         Key: `expense_report${userId}${new Date().toLocaleTimeString()}.xlsx`,
         Body: buffer,
         ContentType:
           "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        ACL: "public-read",
       };
       let s3 = new AWS.S3({
         accessKeyId: process.env.AWS_IAM_USER_KEY,
