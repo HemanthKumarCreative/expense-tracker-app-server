@@ -21,7 +21,6 @@ module.exports.getAllExpenses = async (req, res) => {
   let response = { ...constants.defaultServerResponse };
   try {
     const responseFromService = await expenseService.getAllExpenses(
-      req.query,
       req.params.userId
     );
     response.status = 200;

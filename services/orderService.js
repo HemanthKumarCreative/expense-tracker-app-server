@@ -21,7 +21,7 @@ module.exports.collectPayment = async () => {
   });
 
   const options = {
-    amount: 100,
+    amount: 50000,
     currency: "INR",
     receipt: "receipt-001",
     payment_capture: 1,

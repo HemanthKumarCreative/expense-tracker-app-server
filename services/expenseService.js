@@ -13,23 +13,12 @@ module.exports.createExpense = async (serviceData) => {
   }
 };
 
-module.exports.getAllExpenses = async ({ page }, userId) => {
+module.exports.getAllExpenses = async (userId) => {
   try {
-    const totalCount = await Expense.countDocuments({ userId }); // Count total expenses
-    const pageSize = 3;
-    const offset = (page - 1) * pageSize;
-
-    let expenses = await Expense.find({ userId })
-      .skip(parseInt(offset))
-      .limit(parseInt(pageSize));
-    console.log({ expenses });
-
-    const totalPages = Math.ceil(totalCount / parseInt(pageSize)); // Calculate total pages
+    let expenses = await Expense.find({ userId }).sort({ createdAt: -1 });
 
     return {
       expenses: formatMongoData(expenses),
-      totalPages,
-      currentPage: page,
     };
   } catch (error) {
     console.log("Something went wrong: Service: getAllExpenses", error);

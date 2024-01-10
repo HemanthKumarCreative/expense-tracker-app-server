@@ -107,7 +107,7 @@ module.exports.forgotPassword = async (serviceData) => {
       htmlContent: `
           <p>Hello,</p>
           <p>Please click the following link to reset your password:</p>
-          <a href="http://localhost:3000/reset-password?token=${resetToken}&email=${email}">Reset Password</a>
+          <a href="${process?.env?.CLIENT_URL}/reset-password?token=${resetToken}&email=${email}">Reset Password</a>
         `,
     });
 
