@@ -4,16 +4,18 @@ const constants = require("../constants/index");
 const Expense = require("../database/models/expenseModel");
 const AWS = require("aws-sdk");
 require("aws-sdk/lib/maintenance_mode_message").suppress = true;
-
+const { getAllExpenses } = require("./expenseService");
 const Excel = require("exceljs");
 
 const saveToWorkBook = (jsonData, workbook, worksheet) => {
-  const headerRow = worksheet.addRow(Object.keys(jsonData[0]["_doc"]));
-  worksheet.addRow(headerRow);
+  worksheet.addRow(
+    Object.keys(jsonData[0]).filter(
+      (head) => ["createdAt", "id"].includes(head) !== true
+    )
+  );
 
   jsonData.forEach((row) => {
-    console.log(row);
-    const dataRow = Object.values(row["_doc"]);
+    const dataRow = Object.values(row).slice(0, 3);
     worksheet.addRow(dataRow);
   });
 
@@ -34,8 +36,7 @@ module.exports.createReport = async (userId) => {
   const worksheet = emptyWorkbook.addWorksheet("Expenses");
 
   try {
-    let expenses = await Expense.find({ userId });
-
+    let { expenses } = await getAllExpenses(userId);
     const workbook = await saveToWorkBook(expenses, emptyWorkbook, worksheet);
     const awsResponse = await workbook.xlsx.writeBuffer().then((buffer) => {
       const params = {

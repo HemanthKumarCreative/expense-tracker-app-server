@@ -15,7 +15,9 @@ module.exports.createExpense = async (serviceData) => {
 
 module.exports.getAllExpenses = async (userId) => {
   try {
-    let expenses = await Expense.find({ userId }).sort({ createdAt: -1 });
+    let expenses = await Expense.find({ userId })
+      .sort({ createdAt: -1 })
+      .select("createdAt amount category description");
 
     return {
       expenses: formatMongoData(expenses),

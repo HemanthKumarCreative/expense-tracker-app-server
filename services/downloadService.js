@@ -18,7 +18,8 @@ module.exports.getAllDownloads = async (userId) => {
     // Fetching downloads, sorting by 'created' date in descending order, and limiting to 5 records
     let downloads = await Download.find({ userId })
       .sort({ createdAt: -1 })
-      .limit(5);
+      .limit(5)
+      .select("createdAt fileLink");
     return formatMongoData(downloads);
   } catch (error) {
     console.log("Something went wrong: Service: getAllDownloads", error);
