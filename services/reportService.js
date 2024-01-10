@@ -63,7 +63,7 @@ module.exports.createReport = async (userId) => {
     });
     return awsResponse;
   } catch (error) {
-    console.error(error);
+    throw new Error(error);
   }
 };
 
@@ -74,7 +74,6 @@ module.exports.getAllReports = async ({ skip = 0, limit = 10 }) => {
       .limit(parseInt(limit));
     return formatMongoData(reports);
   } catch (error) {
-    console.log("Something went wrong: Service: getAllReports", error);
     throw new Error(error);
   }
 };
@@ -88,7 +87,6 @@ module.exports.getReportById = async ({ id }) => {
     }
     return formatMongoData(report);
   } catch (error) {
-    console.log("Something went wrong: Service: getReportById", error);
     throw new Error(error);
   }
 };
@@ -104,7 +102,6 @@ module.exports.updateReport = async ({ id, updateInfo }) => {
     }
     return formatMongoData(report);
   } catch (error) {
-    console.log("Something went wrong: Service: updateReport", error);
     throw new Error(error);
   }
 };
@@ -118,7 +115,6 @@ module.exports.deleteReport = async ({ id }) => {
     }
     return formatMongoData(report);
   } catch (error) {
-    console.log("Something went wrong: Service: deleteReport", error);
     throw new Error(error);
   }
 };

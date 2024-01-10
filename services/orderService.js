@@ -9,7 +9,6 @@ module.exports.createOrder = async (serviceData) => {
     let result = await order.save();
     return formatMongoData(result);
   } catch (error) {
-    console.log("Something went wrong: Service: createExpense", error);
     throw new Error(error);
   }
 };
@@ -29,7 +28,6 @@ module.exports.collectPayment = async () => {
 
   try {
     const response = await razorpay.orders.create(options);
-    console.log(response);
     const order = {
       order_id: response.id,
       currency: response.currency,
@@ -38,7 +36,7 @@ module.exports.collectPayment = async () => {
 
     return order;
   } catch (err) {
-    console.error(err);
+    throw new Error(err);
   }
 };
 
@@ -49,7 +47,6 @@ module.exports.getAllOrders = async ({ skip = 0, limit = 10 }) => {
       .limit(parseInt(limit));
     return formatMongoData(orders);
   } catch (error) {
-    console.log("Something went wrong: Service: getAllOrders", error);
     throw new Error(error);
   }
 };
@@ -63,7 +60,6 @@ module.exports.getOrderById = async ({ id }) => {
     }
     return formatMongoData(order);
   } catch (error) {
-    console.log("Something went wrong: Service: getOrderById", error);
     throw new Error(error);
   }
 };
@@ -79,7 +75,6 @@ module.exports.updateOrder = async ({ id, updateInfo }) => {
     }
     return formatMongoData(order);
   } catch (error) {
-    console.log("Something went wrong: Service: updateOrder", error);
     throw new Error(error);
   }
 };
@@ -93,7 +88,6 @@ module.exports.deleteOrder = async ({ id }) => {
     }
     return formatMongoData(order);
   } catch (error) {
-    console.log("Something went wrong: Service: deleteOrder", error);
     throw new Error(error);
   }
 };

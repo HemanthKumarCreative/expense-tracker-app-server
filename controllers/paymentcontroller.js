@@ -10,7 +10,6 @@ module.exports.createPayment = async (req, res) => {
     response.message = constants.paymentMessage.PRODUCT_CREATED;
     response.body = responseFromService.order;
   } catch (error) {
-    console.log("Something went wrong: Controller: createPayment", error);
     response.message = error.message;
   }
 
@@ -26,7 +25,6 @@ module.exports.getAllPayments = async (req, res) => {
     response.message = constants.paymentMessage.PRODUCT_FETCHED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: getAllPayments", error);
     response.message = error.message;
   }
 
@@ -42,7 +40,6 @@ module.exports.getPaymentById = async (req, res) => {
     response.message = constants.paymentMessage.PRODUCT_FETCHED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: getPaymentById", error);
     response.message = error.message;
   }
 
@@ -61,7 +58,6 @@ module.exports.updatePayment = async (req, res) => {
     response.message = constants.paymentMessage.PRODUCT_UPDATED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: updatePayment", error);
     response.message = error.message;
   }
 
@@ -77,7 +73,6 @@ module.exports.deletePayment = async (req, res) => {
     response.message = constants.paymentMessage.PRODUCT_DELETED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: deletePayment", error);
     response.message = error.message;
   }
 

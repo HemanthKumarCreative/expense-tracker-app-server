@@ -8,7 +8,6 @@ module.exports.createDownload = async (serviceData) => {
     let result = await download.save();
     return formatMongoData(result);
   } catch (error) {
-    console.log("Something went wrong: Service: createDownload", error);
     throw new Error(error);
   }
 };
@@ -22,7 +21,6 @@ module.exports.getAllDownloads = async (userId) => {
       .select("createdAt fileLink");
     return formatMongoData(downloads);
   } catch (error) {
-    console.log("Something went wrong: Service: getAllDownloads", error);
     throw new Error(error);
   }
 };
@@ -36,7 +34,6 @@ module.exports.getDownloadById = async ({ id }) => {
     }
     return formatMongoData(download);
   } catch (error) {
-    console.log("Something went wrong: Service: getDownloadById", error);
     throw new Error(error);
   }
 };
@@ -52,7 +49,6 @@ module.exports.updateDownload = async ({ id, updateInfo }) => {
     }
     return formatMongoData(download);
   } catch (error) {
-    console.log("Something went wrong: Service: updateDownload", error);
     throw new Error(error);
   }
 };
@@ -66,7 +62,6 @@ module.exports.deleteDownload = async ({ id }) => {
     }
     return formatMongoData(download);
   } catch (error) {
-    console.log("Something went wrong: Service: deleteDownload", error);
     throw new Error(error);
   }
 };

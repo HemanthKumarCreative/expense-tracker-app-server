@@ -10,7 +10,6 @@ module.exports.signup = async (req, res) => {
     response.message = constants.userMessage.SIGNUP_SUCCESS;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: signup", error);
     response.message = error.message;
   }
 
@@ -26,7 +25,6 @@ module.exports.login = async (req, res) => {
     response.message = constants.userMessage.LOGIN_SUCCESS;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: login", error);
     response.message = error.message;
   }
 
@@ -42,7 +40,6 @@ module.exports.createUser = async (req, res) => {
     response.message = constants.userMessage.PRODUCT_CREATED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: createUser", error);
     response.message = error.message;
   }
 
@@ -58,7 +55,6 @@ module.exports.getAllUsers = async (req, res) => {
     response.message = constants.userMessage.PRODUCT_FETCHED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: getAllUsers", error);
     response.message = error.message;
   }
 
@@ -74,7 +70,6 @@ module.exports.getUserById = async (req, res) => {
     response.message = constants.userMessage.PRODUCT_FETCHED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: getUserById", error);
     response.message = error.message;
   }
 
@@ -93,7 +88,6 @@ module.exports.updateUser = async (req, res) => {
     response.message = constants.userMessage.PRODUCT_UPDATED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: updateUser", error);
     response.message = error.message;
   }
 
@@ -109,7 +103,6 @@ module.exports.deleteUser = async (req, res) => {
     response.message = constants.userMessage.PRODUCT_DELETED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: deleteUser", error);
     response.message = error.message;
   }
 

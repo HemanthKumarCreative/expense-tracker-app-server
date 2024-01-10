@@ -10,7 +10,6 @@ module.exports.createOrder = async (req, res) => {
     response.message = constants.orderMessage.PRODUCT_CREATED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: createOrder", error);
     response.message = error.message;
   }
 
@@ -26,7 +25,6 @@ module.exports.collectPayment = async (req, res) => {
     response.message = constants.orderMessage.PRODUCT_CREATED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: createOrder", error);
     response.message = error.message;
   }
 
@@ -42,7 +40,6 @@ module.exports.getAllOrders = async (req, res) => {
     response.message = constants.orderMessage.PRODUCT_FETCHED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: getAllOrders", error);
     response.message = error.message;
   }
 
@@ -58,7 +55,6 @@ module.exports.getOrderById = async (req, res) => {
     response.message = constants.orderMessage.PRODUCT_FETCHED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: getOrderById", error);
     response.message = error.message;
   }
 
@@ -77,7 +73,6 @@ module.exports.updateOrder = async (req, res) => {
     response.message = constants.orderMessage.PRODUCT_UPDATED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: updateOrder", error);
     response.message = error.message;
   }
 
@@ -93,7 +88,6 @@ module.exports.deleteOrder = async (req, res) => {
     response.message = constants.orderMessage.PRODUCT_DELETED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: deleteOrder", error);
     response.message = error.message;
   }
 

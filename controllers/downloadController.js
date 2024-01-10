@@ -10,7 +10,6 @@ module.exports.createDownload = async (req, res) => {
     response.message = constants.downloadMessage.PRODUCT_CREATED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: createDownload", error);
     response.message = error.message;
   }
 
@@ -28,7 +27,6 @@ module.exports.getAllDownloads = async (req, res) => {
     response.message = constants.downloadMessage.PRODUCT_FETCHED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: getAllDownloads", error);
     response.message = error.message;
   }
 
@@ -46,7 +44,6 @@ module.exports.getDownloadById = async (req, res) => {
     response.message = constants.downloadMessage.PRODUCT_FETCHED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: getDownloadById", error);
     response.message = error.message;
   }
 
@@ -65,7 +62,6 @@ module.exports.updateDownload = async (req, res) => {
     response.message = constants.downloadMessage.PRODUCT_UPDATED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: updateDownload", error);
     response.message = error.message;
   }
 
@@ -83,7 +79,6 @@ module.exports.deleteDownload = async (req, res) => {
     response.message = constants.downloadMessage.PRODUCT_DELETED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: deleteDownload", error);
     response.message = error.message;
   }
 

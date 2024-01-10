@@ -25,7 +25,6 @@ module.exports.signup = async ({ name, email, password }) => {
 
     return result;
   } catch (error) {
-    console.log("Something went wrong: Service: createProduct", error);
     throw new Error(error);
   }
 };
@@ -51,7 +50,6 @@ module.exports.login = async ({ email, password }) => {
 
     return { user, token };
   } catch (error) {
-    console.log("Something went wrong: Service: createProduct", error);
     throw new Error(error);
   }
 };
@@ -62,7 +60,6 @@ module.exports.createUser = async (serviceData) => {
     let result = await user.save();
     return formatMongoData(result);
   } catch (error) {
-    console.log("Something went wrong: Service: createUser", error);
     throw new Error(error);
   }
 };
@@ -74,7 +71,6 @@ module.exports.getAllUsers = async () => {
       .select("-email -password -createdAt -updatedAt -isPremiumUser");
     return formatMongoData(users);
   } catch (error) {
-    console.log("Something went wrong: Service: getAllUsers", error);
     throw new Error(error);
   }
 };
@@ -88,7 +84,6 @@ module.exports.getUserById = async ({ id }) => {
     }
     return formatMongoData(user);
   } catch (error) {
-    console.log("Something went wrong: Service: getUserById", error);
     throw new Error(error);
   }
 };
@@ -104,7 +99,6 @@ module.exports.updateUser = async ({ id, updateInfo }) => {
     }
     return formatMongoData(user);
   } catch (error) {
-    console.log("Something went wrong: Service: updateUser", error);
     throw new Error(error);
   }
 };
@@ -118,7 +112,6 @@ module.exports.deleteUser = async ({ id }) => {
     }
     return formatMongoData(user);
   } catch (error) {
-    console.log("Something went wrong: Service: deleteUser", error);
     throw new Error(error);
   }
 };

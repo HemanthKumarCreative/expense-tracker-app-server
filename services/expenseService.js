@@ -8,7 +8,6 @@ module.exports.createExpense = async (serviceData) => {
     let result = await expense.save();
     return formatMongoData(result);
   } catch (error) {
-    console.log("Something went wrong: Service: createExpense", error);
     throw new Error(error);
   }
 };
@@ -23,7 +22,6 @@ module.exports.getAllExpenses = async (userId) => {
       expenses: formatMongoData(expenses),
     };
   } catch (error) {
-    console.log("Something went wrong: Service: getAllExpenses", error);
     throw new Error(error);
   }
 };
@@ -37,7 +35,6 @@ module.exports.getExpenseById = async ({ id }) => {
     }
     return formatMongoData(expense);
   } catch (error) {
-    console.log("Something went wrong: Service: getExpenseById", error);
     throw new Error(error);
   }
 };
@@ -53,7 +50,6 @@ module.exports.updateExpense = async ({ id, updateInfo }) => {
     }
     return formatMongoData(expense);
   } catch (error) {
-    console.log("Something went wrong: Service: updateExpense", error);
     throw new Error(error);
   }
 };
@@ -67,7 +63,6 @@ module.exports.deleteExpense = async ({ id }) => {
     }
     return formatMongoData(expense);
   } catch (error) {
-    console.log("Something went wrong: Service: deleteExpense", error);
     throw new Error(error);
   }
 };

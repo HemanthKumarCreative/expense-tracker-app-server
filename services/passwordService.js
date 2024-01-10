@@ -12,7 +12,6 @@ module.exports.createPassword = async (serviceData) => {
     let result = await password.save();
     return formatMongoData(result);
   } catch (error) {
-    console.log("Something went wrong: Service: createPassword", error);
     throw new Error(error);
   }
 };
@@ -24,7 +23,6 @@ module.exports.getAllPasswords = async ({ skip = 0, limit = 10 }) => {
       .limit(parseInt(limit));
     return formatMongoData(passwords);
   } catch (error) {
-    console.log("Something went wrong: Service: getAllPasswords", error);
     throw new Error(error);
   }
 };
@@ -38,7 +36,6 @@ module.exports.getPasswordById = async ({ id }) => {
     }
     return formatMongoData(password);
   } catch (error) {
-    console.log("Something went wrong: Service: getPasswordById", error);
     throw new Error(error);
   }
 };
@@ -54,7 +51,6 @@ module.exports.updatePassword = async ({ id, updateInfo }) => {
     }
     return formatMongoData(password);
   } catch (error) {
-    console.log("Something went wrong: Service: updatePassword", error);
     throw new Error(error);
   }
 };
@@ -68,15 +64,12 @@ module.exports.deletePassword = async ({ id }) => {
     }
     return formatMongoData(password);
   } catch (error) {
-    console.log("Something went wrong: Service: deletePassword", error);
     throw new Error(error);
   }
 };
 
 module.exports.forgotPassword = async (serviceData) => {
-  console.log({ serviceData });
   const { email } = serviceData;
-  console.log({ email });
   const resetToken = await generateRandomToken();
   const sender = {
     email: "avisihks@gmail.com",
@@ -91,8 +84,6 @@ module.exports.forgotPassword = async (serviceData) => {
         new: true,
       }
     );
-
-    console.log(user);
 
     if (!user) {
       throw new Error(constants.userMessage.USER_NOT_FOUND);
@@ -113,7 +104,6 @@ module.exports.forgotPassword = async (serviceData) => {
 
     return { message: "Password reset email sent successfully" };
   } catch (error) {
-    console.log("Something went wrong: Service: forgotPassword", error);
     throw new Error(error);
   }
 };
@@ -133,7 +123,6 @@ module.exports.resetPassword = async (serviceData) => {
 
     return { message: "Password updated successfully" };
   } catch (error) {
-    console.log("Something went wrong: Service: resetPassword", error);
     throw new Error(error);
   }
 };

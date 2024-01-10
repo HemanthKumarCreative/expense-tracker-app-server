@@ -10,7 +10,6 @@ module.exports.createExpense = async (req, res) => {
     response.message = constants.expenseMessage.PRODUCT_CREATED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: createExpense", error);
     response.message = error.message;
   }
 
@@ -27,7 +26,6 @@ module.exports.getAllExpenses = async (req, res) => {
     response.message = constants.expenseMessage.PRODUCT_FETCHED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: getAllExpenses", error);
     response.message = error.message;
   }
 
@@ -43,7 +41,6 @@ module.exports.getExpenseById = async (req, res) => {
     response.message = constants.expenseMessage.PRODUCT_FETCHED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: getExpenseById", error);
     response.message = error.message;
   }
 
@@ -62,7 +59,6 @@ module.exports.updateExpense = async (req, res) => {
     response.message = constants.expenseMessage.PRODUCT_UPDATED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: updateExpense", error);
     response.message = error.message;
   }
 
@@ -78,7 +74,6 @@ module.exports.deleteExpense = async (req, res) => {
     response.message = constants.expenseMessage.PRODUCT_DELETED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: deleteExpense", error);
     response.message = error.message;
   }
 

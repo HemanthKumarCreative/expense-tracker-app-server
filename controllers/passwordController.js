@@ -10,7 +10,6 @@ module.exports.createPassword = async (req, res) => {
     response.message = constants.passwordMessage.PRODUCT_CREATED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: createPassword", error);
     response.message = error.message;
   }
 
@@ -28,7 +27,6 @@ module.exports.getAllPasswords = async (req, res) => {
     response.message = constants.passwordMessage.PRODUCT_FETCHED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: getAllPasswords", error);
     response.message = error.message;
   }
 
@@ -46,7 +44,6 @@ module.exports.getPasswordById = async (req, res) => {
     response.message = constants.passwordMessage.PRODUCT_FETCHED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: getPasswordById", error);
     response.message = error.message;
   }
 
@@ -65,7 +62,6 @@ module.exports.updatePassword = async (req, res) => {
     response.message = constants.passwordMessage.PRODUCT_UPDATED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: updatePassword", error);
     response.message = error.message;
   }
 
@@ -83,7 +79,6 @@ module.exports.deletePassword = async (req, res) => {
     response.message = constants.passwordMessage.PRODUCT_DELETED;
     response.body = responseFromService;
   } catch (error) {
-    console.log("Something went wrong: Controller: deletePassword", error);
     response.message = error.message;
   }
 
@@ -99,7 +94,6 @@ module.exports.forgotPassword = async (req, res) => {
     response.message = constants.passwordMessage.PRODUCT_CREATED;
     response.body = responseFromService.message;
   } catch (error) {
-    console.log("Something went wrong: Controller: forgotPassword", error);
     response.message = error.message;
   }
 
@@ -115,7 +109,6 @@ module.exports.resetPassword = async (req, res) => {
     response.message = constants.passwordMessage.PRODUCT_CREATED;
     response.body = responseFromService.message;
   } catch (error) {
-    console.log("Something went wrong: Controller: resetPassword", error);
     response.message = error.message;
   }
 

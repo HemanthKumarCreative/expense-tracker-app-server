@@ -9,9 +9,7 @@ module.exports.validateToken = (req, res, next) => {
     }
     const token = req.headers.authorization.split("Bearer")[1].trim();
     const decoded = jwt.verify(token, process.env.SECRET_KEY || "my-sec-key");
-    console.log("decoded", decoded);
   } catch (error) {
-    console.log("Error", error);
     response.message = error.message;
     response.status = 401;
   }
