@@ -69,7 +69,9 @@ module.exports.createUser = async (serviceData) => {
 
 module.exports.getAllUsers = async () => {
   try {
-    let users = await User.find({}).sort({ totalExpenses: -1 });
+    let users = await User.find({})
+      .sort({ totalExpenses: -1 })
+      .select("-email -password -createdAt -updatedAt -isPremiumUser");
     return formatMongoData(users);
   } catch (error) {
     console.log("Something went wrong: Service: getAllUsers", error);
